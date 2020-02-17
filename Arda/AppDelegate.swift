@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Arda
 //
-//  Created by Jordan Reed on 2/5/20.
-//  Copyright © 2020 Jordan Reed. All rights reserved.
+//  Created by Jordan on 2/5/20.
+//  Copyright © 2020 Jordan. All rights reserved.
 //
 
 import UIKit
