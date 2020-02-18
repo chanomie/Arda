@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var statistics = Statistics()
     @State var pool = 0
+    @State private var isSharePresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -27,13 +28,30 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle(Text("Stat Roller"))
-        }
+            .navigationBarItems(
+                leading:
+                    Button("Reroll") {
+                        self.statistics.reroll()
+                        self.pool = 0
+                    },
+                trailing:
+                    Button(action: {
+                        self.isSharePresented = true
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+            )
+        } .sheet(isPresented: $isSharePresented, onDismiss: {
+                   print("Dismiss")
+               }, content: {
+                   ActivityViewController(activityItems: [URL(string: "https://www.apple.com")!])
+               })
     }
-
+    
     struct StatView: View {
         @ObservedObject var statisticItem: StatisticItem
         @Binding var pool: Int
-        
+
         var body: some View {
             HStack{
                 Text(statisticItem.name)
@@ -65,6 +83,21 @@ struct ContentView: View {
             }
         }
     }
+}
+
+// https://stackoverflow.com/questions/56533564/showing-uiactivityviewcontroller-in-switui
+struct ActivityViewController: UIViewControllerRepresentable {
+
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ActivityViewController>) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityViewController>) {}
+
 }
 
 

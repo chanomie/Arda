@@ -26,7 +26,7 @@ class StatisticItem: ObservableObject {
         return abs(self.modifier) < CHANGE_LIMIT
     }
 
-    var name: String
+    let name: String
     @Published var startValue: Int
     @Published var modifier: Int
 }
@@ -39,6 +39,13 @@ class Statistics: ObservableObject {
         self.statList = [];
         for statisticsName in statisticsNames {
             self.statList.append(StatisticItem(name: statisticsName, startValue:  Int.random(in: 20 ... 100), modifier: 0))
+        }
+    }
+    
+    func reroll() -> Void {
+        for statisticItem in statList {
+            statisticItem.startValue = Int.random(in: 20 ... 100)
+            statisticItem.modifier = 0
         }
     }
 }
