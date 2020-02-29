@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091F7D902409D5E50086D293 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 091F7D8E2409D5E50086D293 /* Localizable.strings */; };
 		0954901E23F908A300DF8BCC /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0954901D23F908A300DF8BCC /* Statistics.swift */; };
 		09899EF623EBD60F0075AB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09899EF523EBD60F0075AB67 /* AppDelegate.swift */; };
 		09899EF823EBD60F0075AB67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09899EF723EBD60F0075AB67 /* SceneDelegate.swift */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		091F7D8F2409D5E50086D293 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Arda/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		091F7D912409D6630086D293 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Arda/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0954901D23F908A300DF8BCC /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		09899EF223EBD60F0075AB67 /* Arda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09899EF523EBD60F0075AB67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		09899EF423EBD60F0075AB67 /* Arda */ = {
 			isa = PBXGroup;
 			children = (
+				091F7D8E2409D5E50086D293 /* Localizable.strings */,
 				09899EF523EBD60F0075AB67 /* AppDelegate.swift */,
 				09899EF723EBD60F0075AB67 /* SceneDelegate.swift */,
 				09899EF923EBD60F0075AB67 /* ContentView.swift */,
@@ -225,6 +229,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 09899EE923EBD60F0075AB67;
 			productRefGroup = 09899EF323EBD60F0075AB67 /* Products */;
@@ -244,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09899F0223EBD6110075AB67 /* LaunchScreen.storyboard in Resources */,
+				091F7D902409D5E50086D293 /* Localizable.strings in Resources */,
 				09899EFF23EBD6110075AB67 /* Preview Assets.xcassets in Resources */,
 				09899EFC23EBD6110075AB67 /* Assets.xcassets in Resources */,
 			);
@@ -309,6 +315,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		091F7D8E2409D5E50086D293 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				091F7D8F2409D5E50086D293 /* Base */,
+				091F7D912409D6630086D293 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		09899F0023EBD6110075AB67 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -324,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -384,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +457,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Arda/Preview Content\"";
+				DEVELOPMENT_TEAM = JM9S84DFPK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Arda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Arda/Preview Content\"";
+				DEVELOPMENT_TEAM = JM9S84DFPK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Arda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

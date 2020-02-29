@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let generator = UINotificationFeedbackGenerator()
+    
     @ObservedObject var statistics = Statistics()
     @State var pool = 0
     @State private var isSharePresented: Bool = false
@@ -16,21 +18,33 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(statistics.statList, id:\.name) { stat in
-                    StatView(statisticItem: stat, pool: self.$pool)
-                }
                 Section {
                     HStack {
-                        Text("Pool")
+                        Text(LocalizedStringKey("roller.pool"))
                         Spacer()
                         Text(String(pool))
                     }
                 }
+                ForEach(statistics.statList, id:\.name) { stat in
+                    StatView(statisticItem: stat, pool: self.$pool)
+                }
+                Section {
+                    Group {
+                        Image("Arda-Icon-Launch").resizable().frame(width: 100, height: 100)
+                        .onTapGesture {
+                            self.statistics.reroll()
+                            self.pool = 0
+                            
+                            let impactLight = UIImpactFeedbackGenerator(style: .medium)
+                            impactLight.impactOccurred()
+                        }
+                    }.position(x: UIScreen.main.bounds.width/2, y:50)
+                }
             }
-            .navigationBarTitle(Text("Stat Roller"))
+            .navigationBarTitle(Text(LocalizedStringKey("application.title")))
             .navigationBarItems(
                 leading:
-                    Button("Reroll") {
+                    Button(LocalizedStringKey("roller.reroll")) {
                         self.statistics.reroll()
                         self.pool = 0
                     },
@@ -41,10 +55,11 @@ struct ContentView: View {
                         Image(systemName: "square.and.arrow.up")
                     }
             )
-        } .sheet(isPresented: $isSharePresented, onDismiss: {
-                   print("Dismiss")
+        }.navigationViewStyle(StackNavigationViewStyle())
+         .sheet(isPresented: $isSharePresented, onDismiss: {
+                   // dismissed
                }, content: {
-                   ActivityViewController(activityItems: [URL(string: "https://www.apple.com")!])
+                ActivityViewController(activityItems: [self.statistics.description])
                })
     }
     
@@ -54,7 +69,7 @@ struct ContentView: View {
 
         var body: some View {
             HStack{
-                Text(statisticItem.name)
+                Text(LocalizedStringKey(statisticItem.name))
                     .frame(width: 150, alignment: .topLeading)
                 Text(String(statisticItem.startValue))
                     .frame(width: 50, alignment: .topLeading)
@@ -65,7 +80,10 @@ struct ContentView: View {
                         if self.statisticItem.decreasable() {
                             self.statisticItem.modifier -= 1
                             self.pool += 1
+                            let impactLight = UIImpactFeedbackGenerator(style: .light)
+                            impactLight.impactOccurred()
                         }
+
                     }) {
                         Image(systemName: "minus.square.fill")
                     }.buttonStyle(BorderlessButtonStyle())
@@ -74,6 +92,8 @@ struct ContentView: View {
                         if self.statisticItem.increasable() && self.pool > 0 {
                             self.statisticItem.modifier += 1
                             self.pool -= 1
+                            let impactLight = UIImpactFeedbackGenerator(style: .light)
+                            impactLight.impactOccurred()
                         }
                     }) {
                         Image(systemName: "plus.square.fill")
@@ -103,6 +123,6 @@ struct ActivityViewController: UIViewControllerRepresentable {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environment(\.locale, .init(identifier: "es"))
     }
 }

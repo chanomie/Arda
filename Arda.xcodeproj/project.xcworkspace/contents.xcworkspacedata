@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Arda.xcodeproj">
+      location = "group:/Volumes/jreed/Documents/javadev/Arda/Arda/Localizable.strings">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

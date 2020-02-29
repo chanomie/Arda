@@ -1,0 +1,18 @@
+/*
+  Localizable.strings
+  Arda
+
+  Created by Jordan Reed on 2/28/20.
+  Copyright © 2020 Jordan Reed. All rights reserved.
+*/
+
+"application.title"="Arda Rodillo de Estadística";
+"roller.pool"="Piscina";
+"roller.reroll"="Lanzar Dados";
+"Strength"="Fuerza";
+"Agility"="Agilidad";
+"Constitution"="Constitución";
+"Intelligence"="Inteligencia";
+"Intuition"="Intuición";
+"Presence"="Presencia";
+"Appearance"="Apariencia";

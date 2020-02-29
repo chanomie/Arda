@@ -11,13 +11,16 @@ import Foundation
 let CHANGE_LIMIT=10
 
 class StatisticItem: ObservableObject {
+    let name: String
+    @Published var startValue: Int
+    @Published var modifier: Int
+
     init(name: String, startValue: Int, modifier: Int) {
         self.name = name
         self.startValue = startValue
         self.modifier = modifier
-        
     }
-    
+        
     func increasable() -> Bool {
         return self.modifier < CHANGE_LIMIT
     }
@@ -26,14 +29,27 @@ class StatisticItem: ObservableObject {
         return abs(self.modifier) < CHANGE_LIMIT
     }
 
-    let name: String
-    @Published var startValue: Int
-    @Published var modifier: Int
 }
 
-class Statistics: ObservableObject {
+class Statistics: ObservableObject, CustomStringConvertible {
     let statisticsNames = ["Strength", "Agility", "Constitution", "Intelligence", "Intuition", "Presence", "Appearance"]
-    @Published var statList: [StatisticItem]
+
+    @Published var statList: [StatisticItem] {
+        didSet {
+            // let encoder = JSONEncoder()
+            // if let encoded = try? encoder.encode(statList) {
+            //    UserDefaults.standard.set(encoded, forKey: "statList")
+            // }
+        }
+    }
+
+    var description: String {
+        var stringOutput = ""
+        for statisticItem in statList {
+            stringOutput.append("\(statisticItem.name): \(statisticItem.startValue + statisticItem.modifier)\n")
+        }
+        return stringOutput
+    }
     
     init() {
         self.statList = [];
